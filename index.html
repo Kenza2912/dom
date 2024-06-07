@@ -45,26 +45,8 @@
         // on affiche dans le html le timer 
 
         
-        let min = 0;
-        let t;
-        function timer (t){
-            
-               const timer =setInterval(function(){
-                t++
-                if(t>=60){
-                    t=0;
-                    min++;
-                }
-
-                const watch =document.querySelector(".chrono")
-                watch.innerText= min+":"+t
-
-                console.log(t)
-               },1000)
-            
-        }
+      
         
-        timer(0)
             
                      
        
@@ -104,10 +86,35 @@
                 }
                 else{
                     showReaction("notice",newbox)
+                    
                 }
             })
+            let min = 0;
+        let t;
+        function timer (t){
+            
+               const timer =setInterval(function(){
+                t++
+                
+                if(t>=60){
+                    t=0;
+                    min++;
+                }
+
+                const watch =document.querySelector(".chrono")
+                watch.innerText= min+":"+t
+                if(i==(nb-1)){
+                    
+                    clearInterval(timer)
+                }
+
+                console.log(t)
+               },1000)
+            
         }
-       
+        
+        }
+       timer(0)
         
         shuffelChildren(board)
         
