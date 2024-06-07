@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="board"></div>
-   <p id="chrono">00:00</p>
+   <p class="chrono">00:00</p>
    
     <script>
         function shuffelChildren(parent){
@@ -39,16 +39,34 @@
             
         // }
         // }
-        
-        function timer (t){
-            {
-               const timer =setInterval(function(){
-                t++;
-                console.log(t)
-               })
-            }
-        }
+        // T prendra la valeur qu'on lui attribu au départ
+        // t++ onn incrémente de 1 toute les millesecond avec set interval
+        // on sélectionne la classe chrono et on la met dans la variable watch
+        // on affiche dans le html le timer 
 
+        
+        let min = 0;
+        let t;
+        function timer (t){
+            
+               const timer =setInterval(function(){
+                t++
+                if(t>=60){
+                    t=0;
+                    min++;
+                }
+
+                const watch =document.querySelector(".chrono")
+                watch.innerText= min+":"+t
+
+                console.log(t)
+               },1000)
+            
+        }
+        
+        timer(0)
+            
+                     
        
         const box =document.createElement("div")
         box.classList.add("box")
@@ -60,20 +78,18 @@
             const newbox= box.cloneNode()
             newbox.innerText = i
             board.appendChild(newbox)
-7
+
             newbox.addEventListener("click",function(){
+            
 
-                // timer(0)
-                
-
-                if(i == nb){55
+                if(i == nb){
                     newbox.classList.add("box-clicked")
                     shuffelChildren(board)
                     if(nb == board.children.length){
                         board.querySelectorAll(".box").forEach(function(box){
                             showReaction("success",box)
-
-                            console.log("bonjour")
+                            console.log(box)
+                           clearInterval(timer)
                         })
                     }
                     nb++
