@@ -8,7 +8,8 @@
 </head>
 <body>
     <div id="board"></div>
-    <p id="timer"></p>
+   <p id="chrono">00:00</p>
+   
     <script>
         function shuffelChildren(parent){
             let children = parent.children
@@ -28,28 +29,51 @@
                 }, 800)
             }
         }
+        // let sec = 0
+        // let min = 0
+        // function tick() {
+        // sec++;
+        // if (sec >= 60) {
+        //     sec = 0;
+        //     min++;
+            
+        // }
+        // }
+        
+        function timer (t){
+            {
+               const timer =setInterval(function(){
+                t++;
+                console.log(t)
+               })
+            }
+        }
 
-
+       
         const box =document.createElement("div")
         box.classList.add("box")
         const board = document.querySelector("#board")
         let nbBoite= window.prompt("Combien de boîtes voulez-vous?")
         let nb = 1
+
         for(let i = 1; i <= nbBoite; i++){
             const newbox= box.cloneNode()
             newbox.innerText = i
             board.appendChild(newbox)
 7
             newbox.addEventListener("click",function(){
+
+                // timer(0)
                 
-               
+
                 if(i == nb){55
                     newbox.classList.add("box-clicked")
                     shuffelChildren(board)
                     if(nb == board.children.length){
                         board.querySelectorAll(".box").forEach(function(box){
                             showReaction("success",box)
-                            // clearInterval(date)
+
+                            console.log("bonjour")
                         })
                     }
                     nb++
